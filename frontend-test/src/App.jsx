@@ -1,7 +1,5 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import './App.css';
 import axios from 'axios';
 
 function App() {
@@ -9,17 +7,20 @@ function App() {
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('');
   const [token, setToken] = useState('');
-  const [sample, setSample] = useState('sampe ----> helo');
+  const [sample, setSample] = useState('sample ----> hello');
 
   const handleGetData = async () => {
     try {
-      const data = await fetch("http://localhost:3030/data");
-      const res = await data.json()
-
-      setSample(res.message);
-
-    } catch(er){
+      const data = await fetch("http://localhost:3030/api/data", {
+        headers: {
+          "Authorization": token
+        }
+      });
+      const res = await data.json();
+      setSample(res.data);
+    } catch (er) {
       console.log(er);
+      alert("Unauthorized Action");
     }
   }
 
@@ -35,6 +36,7 @@ function App() {
       console.log('Sign In successful. Token:', token);
     } catch (error) {
       console.error('Sign In failed:', error.message);
+      alert(error.message);
     }
   };
 
@@ -55,59 +57,57 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <h1>React Auth Demo</h1>
-      <div>
-        <h2>Sign In</h2>
-        <form>
-          <label>
+    <div className="app-container">
+      <h1 className="app-title">React Auth Demo</h1>
+
+      <div className="form-section">
+        <h2 className="form-title">Sign In</h2>
+        <form className="form">
+          <label className="form-label">
             Username:
-            <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+            <input className="form-input" type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
           </label>
-          <br />
-          <label>
+          <label className="form-label">
             Password:
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+            <input className="form-input" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
           </label>
-          <br />
-          <button type="button" onClick={handleSignIn}>
+          <button className="form-button" type="button" onClick={handleSignIn}>
             Sign In
           </button>
         </form>
       </div>
-      <div>
-        <h2>Sign Up</h2>
-        <form>
-          <label>
+
+      <div className="form-section">
+        <h2 className="form-title">Sign Up</h2>
+        <form className="form">
+          <label className="form-label">
             Username:
-            <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+            <input className="form-input" type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
           </label>
-          <br />
-          <label>
+          <label className="form-label">
             Password:
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+            <input className="form-input" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
           </label>
-          <br />
-          <label>
+          <label className="form-label">
             Role:
-            <input type="text" value={role} onChange={(e) => setRole(e.target.value)} />
+            <input className="form-input" type="text" value={role} onChange={(e) => setRole(e.target.value)} />
           </label>
-          <br />
-          <button type="button" onClick={handleSignUp}>
+          <button className="form-button" type="button" onClick={handleSignUp}>
             Sign Up
           </button>
         </form>
       </div>
+
       {token && (
-        <div>
-          <h2>Token</h2>
-          <p>{token}</p>
+        <div className="token-section">
+          <h2 className="token-title">Token</h2>
+          <p className="token-text">{token}</p>
         </div>
       )}
-      <div>
-        
-        <h1>{sample}</h1>
-        <button onClick={handleGetData}>Get sample</button>
+
+      <div className="sample-section">
+        <h1 className="sample-text">{sample}</h1>
+        <button className="sample-button" onClick={handleGetData}>Get sample protected resource</button>
       </div>
     </div>
   );

@@ -40,3 +40,104 @@
 .read-the-docs {
   color: #888;
 }
+
+.app-container {
+  font-family: Arial, sans-serif;
+  padding: 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.app-title {
+  text-align: center;
+  color: white;
+  margin-bottom: 2rem;
+}
+
+.form-section {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.form-title {
+  margin-bottom: 1rem;
+  color: #222;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+.form-input {
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-button {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.form-button:hover {
+  background-color: #0056b3;
+}
+
+.token-section {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #eef;
+  border: 1px solid #ccd;
+  border-radius: 6px;
+}
+
+.token-title {
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.token-text {
+  font-family: monospace;
+  word-wrap: break-word;
+  color: purple;
+}
+
+.sample-section {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.sample-text {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.sample-button {
+  padding: 0.5rem 1rem;
+  background-color: #28a745;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.sample-button:hover {
+  background-color: #1e7e34;
+}

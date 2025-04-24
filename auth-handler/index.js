@@ -19,6 +19,7 @@ const users = [];
 // Middleware to extract and verify JWT
 const authenticateToken = (req, res, next) => {
     const token = req.header('Authorization');
+    console.log(token)
     if (!token) return res.sendStatus(401); // Unauthorized
 
     jwt.verify(token, secretKey, (err, user) => {
@@ -73,6 +74,7 @@ app.post('/api/signup', (req, res) => {
     // Add user to the array (replace with database insertion in production)
     const newUser = { id: users.length + 1, username, password, role };
     users.push(newUser);
+    console.log(users)
 
     // Generate JWT for sign-up
     const token = jwt.sign({ id: newUser.id, username: newUser.username, role: newUser.role }, secretKey, {
